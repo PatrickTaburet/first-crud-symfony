@@ -3,19 +3,29 @@
 {% block title %}Hello MainController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<h1 class="text-center mb-4 mt-4">ARTICLES :</h1>
+<div class="container ">
+    <table class="table table-dark table-striped ">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Title</th>
+          <th scope="col">Content</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      {% for article in data %}
+      <tbody class="table table-striped ">
+        <tr>
+          <th>{{article.id}}</th>
+          <td>{{article.title}}</td>
+          <td>{{article.content}}</td>
+          <td><a href="{{ path('update', {'id': article.id})}}">Update</a><a href="{{ path('delete', {'id': article.id})}}">Delete</a></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-  
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/crud-symfo/src/Controller/MainController.php'|file_link(0) }}">src/Controller/MainController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/crud-symfo/templates/main/index.html.twig'|file_link(0) }}">templates/main/index.html.twig</a></code></li>
-    </ul>
+    <button  ><a href="{{ path('create')}}" class="text-decoration-none text-dark"> Add an article </a> </button>
 </div>
 {% endblock %}
