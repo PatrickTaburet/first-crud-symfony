@@ -84,12 +84,12 @@ class MainController extends AbstractController
         $article = $repo-> find($id);
             
        
-            $sendDatabase = $this->getDoctrine()
-                                 ->getManager();
-            $sendDatabase->remove($article);
-            $sendDatabase->flush();
+        $sendDatabase = $this->getDoctrine()
+                                ->getManager();
+        $sendDatabase->remove($article);
+        $sendDatabase->flush();
 
-            $this->addFlash('notice', 'Suppression réussie !!'); 
+        $this->addFlash('notice', 'Suppression réussie !!'); 
 
     
         return $this->redirectToRoute('main');
